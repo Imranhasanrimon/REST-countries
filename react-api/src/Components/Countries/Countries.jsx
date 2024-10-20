@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Country from "../Country/Country";
 
 const Countries = () => {
     const [countries, setCountries] = useState([]);
@@ -9,9 +10,10 @@ const Countries = () => {
             .then(data => setCountries(data))
     }, [])
     return (
-        <div className="border rounded-lg">
-            <h2>Countries: {countries.length}</h2>
-
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-5 p-5">
+            {
+                countries.map((country, i) => <Country country={country} key={i}></Country>)
+            }
         </div>
     );
 };
